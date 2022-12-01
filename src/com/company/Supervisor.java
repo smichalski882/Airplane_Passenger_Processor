@@ -20,10 +20,15 @@ public class Supervisor extends AbstractEmployee{
     }
 
     public boolean canMoveAutomatedCounter(CheckInLine counter){
-        return false;
+        return !counter.hasSupervisor();
     }
 
     public boolean move(CheckInLine counter){
+        if(canMove(counter)) {
+            counter.setAssignedSupervisor(this);
+            this.setAssignedCounter(counter);
+            return true;
+        }
         return false;
     }
 }

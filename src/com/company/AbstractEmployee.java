@@ -15,4 +15,8 @@ public abstract class AbstractEmployee {
         return assignedCounter;
     }
 
+    public void setAssignedCounter(CheckInLine counter){
+        this.assignedCounter = counter;
+    }
+
 }

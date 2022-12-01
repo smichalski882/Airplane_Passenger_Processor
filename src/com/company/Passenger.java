@@ -13,7 +13,6 @@ public class Passenger {
     private String name;
     private LinkedList<Bag> luggage;
     private LinkedList<Passenger.TimeDelay> timeDelays;
-    private boolean beingProcessed;
     private boolean inGroup;
     private PassengerGroup group;
     private final int baggageLimit;

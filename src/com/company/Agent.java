@@ -17,7 +17,7 @@ public class Agent extends AbstractEmployee {
     }
 
     public boolean canMoveAutomatedCounter(CheckInLine counter) {
-        return false;
+        return !counter.hasAgent();
     }
 
     public boolean canMoveInPersonCounter(CheckInLine counter) {
@@ -25,6 +25,11 @@ public class Agent extends AbstractEmployee {
     }
 
     public boolean move(CheckInLine counter) {
+        if(canMove(counter)) {
+            counter.setAssignedAgent(this);
+            this.setAssignedCounter(counter);
+            return true;
+        }
         return false;
     }
 }
