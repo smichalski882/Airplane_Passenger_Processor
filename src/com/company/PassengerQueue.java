@@ -69,6 +69,7 @@ public class PassengerQueue {
         return true;
     }
 
+    //Removes the passenger, calls the correct remove method based on the instance of passenger
     public boolean removePassenger(Passenger passenger){
         if(passenger instanceof RegularFlyer){
             return removeRegularFlyer(this.getRegularFlyerQueue(), passenger);
@@ -76,6 +77,7 @@ public class PassengerQueue {
             return removeFrequentFlyer(this.getFrequentFlyerQueue(), passenger);
     }
 
+    //Removes specified regular flyer from queue
     public boolean removeRegularFlyer(LinkedList<Passenger> queue, Passenger passenger){
         if(this.hasPassenger(queue, passenger)){
             return queue.remove(passenger);

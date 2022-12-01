@@ -23,6 +23,7 @@ public class PassengerProcessor {
         System.out.println("Time to process this passenger: " + this.getProcessTime());
     }
 
+    //Creates a map for each time delay to the amount of time it delays the passenger
     public HashMap<Passenger.TimeDelay, Integer> makeDelayMap(){
         HashMap<Passenger.TimeDelay, Integer> delayMap = new HashMap<>();
         delayMap.put(Passenger.TimeDelay.DELAYED_FLIGHT, Integer.valueOf(180));
@@ -31,6 +32,7 @@ public class PassengerProcessor {
         return delayMap;
     }
 
+    //Calculate the amount of process time the passenger will take based on their delay tags and the delay map
     public int calculateProcessTime(Passenger passenger){
         Integer delayTime = Integer.valueOf(0);
         HashMap<Passenger.TimeDelay, Integer> delayMap = makeDelayMap();

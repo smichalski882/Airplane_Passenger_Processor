@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 public class Shop {
 
-    //ENUM
+    //ENUM for each buyable item
     public enum Merchandise{
         SUPERVISOR, AGENT, AUTOMATED_COUNTER, IN_PERSON_COUNTER
     }
@@ -29,6 +29,8 @@ public class Shop {
     }
 
     //METHODS
+
+    //Adds piece of merchandise to the cart
     public void addToCart(Shop.Merchandise item){
         cart.add(item);
     }
@@ -37,6 +39,7 @@ public class Shop {
         return priceMap;
     }
 
+    //Computes the price of the content of the cart
     public int computeCartPrice(){
         Integer totalPrice = Integer.valueOf(0);
         for(Merchandise item : this.getCart()){
@@ -45,6 +48,7 @@ public class Shop {
         return totalPrice.intValue();
     }
 
+    //Creates a map of each item of merchandise to it's corresponding price
     public HashMap<Merchandise, Integer> makePriceMap(){
         HashMap<Merchandise, Integer> priceMap = new HashMap<>();
         priceMap.put(Merchandise.AGENT, this.getAgentPrice());

@@ -42,6 +42,7 @@ public class Vault {
         diamonds.add(diamond);
     }
 
+    //Checks if the player has sufficient points to afford the content of their cart
     public boolean canAffordCart(Shop shop){
         if(this.getPoints() < shop.computeCartPrice()){
             return false;
@@ -49,7 +50,7 @@ public class Vault {
         return true;
     }
 
-
+    //Checks out the cart if the player can afford the content
     public boolean checkOutCart(Shop shop){
         if(canAffordCart(shop)){
             for(Shop.Merchandise item : shop.getCart()){
@@ -63,6 +64,7 @@ public class Vault {
         return false;
     }
 
+    //Creates a map of each merchandise item to a new instance of the item being purchased
     public HashMap<Shop.Merchandise, Object> makeItemMap(){
         HashMap<Shop.Merchandise, Object> itemMap = new HashMap<>();
         itemMap.put(Shop.Merchandise.AGENT, new Agent());
@@ -72,6 +74,7 @@ public class Vault {
         return itemMap;
     }
 
+    //Creates a map of each merchandise to the corresponding linked list in player where the merchandise will be stored
     public HashMap<Shop.Merchandise, LinkedList> makeListMap(){
         HashMap<Shop.Merchandise, LinkedList> listMap = new HashMap<>();
         listMap.put(Shop.Merchandise.AGENT, this.getAgents());
@@ -89,6 +92,7 @@ public class Vault {
         return this.diamonds;
     }
 
+    //Converts diamonds to points based on how many and the value of the diamonds
     public void convertDiamondToPoints(){
         if(diamonds.size() == 0){
             return;
@@ -105,6 +109,7 @@ public class Vault {
         points = points + value;
     }
 
+    //Subtracts int from points (cannot go negative)
     public boolean subtractFromPoints(int value){
         if(points - value < 0){
             System.out.println("Insufficient Funds");

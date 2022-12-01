@@ -25,6 +25,8 @@ public class CheckInLine {
     //METHODS
 
     //Gets the next passenger
+
+    //Calculates what the next passenger should be based on whether or not a group is being processed
     public Passenger calculateNextPassenger(PassengerQueue passengerQueue){
 
         //IF PROCESSING A GROUP CURRENTLY
@@ -45,10 +47,12 @@ public class CheckInLine {
         return takeNextFromQueue(passengerQueue);
     }
 
+    //Returns the stored next passenger
     public Passenger getNext(){
         return next;
     }
 
+    //Processes a passenger given a passenger queue
     public void process(PassengerQueue passengerQueue){
         if(this.hasSupervisor()){
             processWithSupervisor(passengerQueue);
@@ -56,11 +60,13 @@ public class CheckInLine {
         processWithAgent(passengerQueue);
     }
 
+    //Processes passenger with supervisor, takes less time
     public void processWithSupervisor(PassengerQueue passengerQueue){
         setNext(calculateNextPassenger(passengerQueue));
         this.getProcessor().process(this.getNext(), this.getAssignedAgent(), this.getAssignedSupervisor());
     }
 
+    //Processes passenger with agent, takes full time
     public void processWithAgent(PassengerQueue passengerQueue){
         setNext(calculateNextPassenger(passengerQueue));
         this.getProcessor().process(this.getNext(), this.getAssignedAgent());
@@ -79,8 +85,6 @@ public class CheckInLine {
         passengerQueue.getRegularFlyerQueue().removeFirst();
         return next;
     }
-
-    //Set the group to this check in line
 
 
     //Set the next passenger
@@ -141,6 +145,7 @@ public class CheckInLine {
         return false;
     }
 
+    //Transfers passenger to a different check in line
     public boolean transferPassenger(CheckInLine counter){
         if(!counter.hasPassenger()){
             counter.setCurrentPassenger(this.getCurrentPassenger());

@@ -11,9 +11,8 @@ public class InPersonLine extends CheckInLine{
     }
 
     //METHODS
-    public int getProcessTime(Passenger passenger){
-        return 4;
-    }
+
+    //Transfer agent to a different counter if possible
     public boolean transferAgent(CheckInLine transfer){
         if(transfer.hasAgent()){
             System.out.println("This check in line already has an agent!");
@@ -24,7 +23,7 @@ public class InPersonLine extends CheckInLine{
         return true;
     }
 
-
+    //Transfers supervisor to a different counter if possible
     public boolean transferSupervisor(CheckInLine transfer){
         if(transfer.hasSupervisor()){
             System.out.println("This check in line already has a supervisor!");

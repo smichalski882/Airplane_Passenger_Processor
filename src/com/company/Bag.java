@@ -25,6 +25,8 @@ public class Bag implements Comparable<Bag>{
     }
 
     @Override
+
+    //Compare the weight of two bags
     public int compareTo(Bag otherBag) {
         if(this.getWeight() < otherBag.getWeight()){
             return -1;

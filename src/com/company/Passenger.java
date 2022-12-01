@@ -35,11 +35,14 @@ public class Passenger {
 
 
     //METHODS
+
+    //Adds overweight tag in the constructor
     public void addOverweightTagIfNeeded(){
         if(this.hasOverWeight(this.getLuggage())) {
             this.getTimeDelays().add(TimeDelay.OVERWEIGHT_LUGGAGE);
         }
     }
+
 
     public LinkedList<Passenger.TimeDelay> getTimeDelays(){
         return this.timeDelays;
@@ -49,6 +52,7 @@ public class Passenger {
         return this.baggageLimit;
     }
 
+    //Returns whether this passenger has an overweight bag in their luggage
     public boolean hasOverWeight(LinkedList<Bag> luggage){
         for(Bag bag : luggage){
             if(bag.getWeight() > this.getBaggageLimit())

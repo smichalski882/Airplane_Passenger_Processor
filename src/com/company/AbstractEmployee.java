@@ -11,6 +11,7 @@ public abstract class AbstractEmployee {
     }
 
     //METHODS
+
     public CheckInLine getAssignedCounter() {
         return assignedCounter;
     }

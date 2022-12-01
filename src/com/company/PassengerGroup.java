@@ -14,6 +14,7 @@ public class PassengerGroup {
     }
 
     //METHODS
+
     public CheckInLine getCurrentCounter(){
         return currentCounter;
     }
@@ -22,6 +23,7 @@ public class PassengerGroup {
         this.currentCounter = currentCounter;
     }
 
+    //Add a passenger to this passenger group
     public boolean addPassenger(Passenger passenger){
 
         //Check to see if passenger already exists in the group
