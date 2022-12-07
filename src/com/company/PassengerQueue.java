@@ -16,27 +16,45 @@ public class PassengerQueue {
     }
 
     //METHODS
+
+    /**
+     * @param queue to check for a specified passenger
+     * @param passenger that you are checking to see the existence of in the queue
+     * @return whether or not the passenger is in the queue
+     */
     public boolean hasPassenger(LinkedList<Passenger> queue, Passenger passenger){
+
+        //Check if the passenger matches any in the queue
         for(Passenger inQueue : queue){
             if(passenger.equals(inQueue)){
-                return true;
+                return true; //the queue already has the passenger
             }
         }
-        return false;
+        return false; //the queue does not currently have the passenger
     }
 
-    //Return frequent flyer queue
+    /**
+     * @return the linked list representing the frequent flyer queue
+     */
     public LinkedList<Passenger> getFrequentFlyerQueue(){
         return this.frequentFlyerQueue;
     }
 
-    //Return regular flyer queue
+    /**
+     * @return the linked list representing the regular flyer queue
+     */
     public LinkedList<Passenger> getRegularFlyerQueue(){
         return this.regularFlyerQueue;
     }
 
-    //Add a passenger to the back of the queue they belong to, McCabe's = 4
+    /**
+     * McCabes = 4
+     * @param passenger to be added to the queue
+     * @return boolean if the passenger is successfully added
+     */
     public boolean addPassenger(Passenger passenger){
+
+        //Return the corresponding add method to the instance of passenger passed through
         if(passenger instanceof RegularFlyer){
             return addRegularFlyer(passenger);
         }
@@ -49,8 +67,13 @@ public class PassengerQueue {
         }
     }
 
-    //Add a passenger to frequent flyer queue if they don't already exist
+    /**
+     * @param passenger that you want to add to the frequent flyer queue
+     * @return boolean of whether or not the passenger is successfully added
+     */
     public boolean addFrequentFlyer(Passenger passenger){
+
+        //Only add passenger if they don't already exist in the queue
         if(this.hasPassenger(this.getFrequentFlyerQueue(), passenger)){
             System.out.println("This passenger already exists in the queue, cannot be added twice!");
             return false;
@@ -59,8 +82,13 @@ public class PassengerQueue {
         return true;
     }
 
-    //Add a passenger to the regular flyer queue if they don't already exist
+    /**
+     * @param passenger that you want to add to the regular flyer queue
+     * @return boolean of whether or not the passenger is successfully added
+     */
     public boolean addRegularFlyer(Passenger passenger){
+
+        //Only add passenger if they don't already exist in the queue
         if(this.hasPassenger(this.getRegularFlyerQueue(), passenger)){
             System.out.println("This passenger already exists in the queue, cannot be added twice!");
             return false;
@@ -69,16 +97,27 @@ public class PassengerQueue {
         return true;
     }
 
-    //Removes the passenger, calls the correct remove method based on the instance of passenger
+    /**
+     * @param passenger you want to remove from the queue
+     * @return boolean if the passenger is successfully removed
+     */
     public boolean removePassenger(Passenger passenger){
+
+        //Call the remove method based on the instance of passenger being passed through
         if(passenger instanceof RegularFlyer){
             return removeRegularFlyer(this.getRegularFlyerQueue(), passenger);
         }
             return removeFrequentFlyer(this.getFrequentFlyerQueue(), passenger);
     }
 
-    //Removes specified regular flyer from queue
+    /**
+     * @param queue that you want to remove the passenger from (regular flyer)
+     * @param passenger that you want to remove from the queue
+     * @return boolean if removing the passenger is successful
+     */
     public boolean removeRegularFlyer(LinkedList<Passenger> queue, Passenger passenger){
+
+        //Can only remove regular flyer from queue if they exist in the queue
         if(this.hasPassenger(queue, passenger)){
             return queue.remove(passenger);
         }
@@ -86,8 +125,14 @@ public class PassengerQueue {
         return false;
     }
 
-    //remove specified passenger from specified queue
+    /**
+     * @param queue that you want to remove the passenger from (frequent flyer)
+     * @param passenger that you want to remove from the queue
+     * @return boolean if removing the passenger is successful
+     */
     public boolean removeFrequentFlyer(LinkedList<Passenger> queue, Passenger passenger){
+
+        //Can only remove this passenger if they exist in the queue
         if(this.hasPassenger(queue, passenger)){
             return queue.remove(passenger);
         }
@@ -95,12 +140,16 @@ public class PassengerQueue {
         return false;
     }
 
-    //Return whether the queues are blocked
+    /**
+     * @return boolean if the queues are being blocked by something
+     */
     public boolean isBlocked(){
         return this.blocked;
     }
 
-    //Set whether or not the queues are blocked
+    /**
+     * @param blocked boolean value you want to set the block status of the queue to
+     */
     public void setBlocked(boolean blocked){
         this.blocked = blocked;
     }

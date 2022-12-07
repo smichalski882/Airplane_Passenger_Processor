@@ -5,7 +5,9 @@ import java.util.LinkedList;
 
 public class Shop {
 
-    //ENUM for each buyable item
+    //ENUMS
+
+    //All purchasable items in AirVille
     public enum Merchandise{
         SUPERVISOR, AGENT, AUTOMATED_COUNTER, IN_PERSON_COUNTER
     }
@@ -30,25 +32,36 @@ public class Shop {
 
     //METHODS
 
-    //Adds piece of merchandise to the cart
+    /**
+     * @param item that you are adding to the cart
+     */
     public void addToCart(Shop.Merchandise item){
         cart.add(item);
     }
 
+    /**
+     * @return the pricemap for the merchandise enums belonging to this shop
+     */
     public HashMap<Merchandise, Integer> getPriceMap(){
         return priceMap;
     }
 
-    //Computes the price of the content of the cart
+    /**
+     * @return the current price of the cart based on it's contents
+     */
     public int computeCartPrice(){
-        Integer totalPrice = Integer.valueOf(0);
+        Integer totalPrice = Integer.valueOf(0);    //variable to keep track of current price
+
+        //add price of enum to the total for each in the cart
         for(Merchandise item : this.getCart()){
             totalPrice = totalPrice + this.getPriceMap().get(item);
         }
-        return totalPrice.intValue();
+        return totalPrice.intValue();   //return the total value of the cart
     }
 
-    //Creates a map of each item of merchandise to it's corresponding price
+    /**
+     * @return a hashmap mapping each item of merchandise to its corresponding price
+     */
     public HashMap<Merchandise, Integer> makePriceMap(){
         HashMap<Merchandise, Integer> priceMap = new HashMap<>();
         priceMap.put(Merchandise.AGENT, this.getAgentPrice());
@@ -58,26 +71,44 @@ public class Shop {
         return priceMap;
     }
 
+    /**
+     * @return a linked list representing the cart
+     */
     public LinkedList<Merchandise> getCart(){
         return this.cart;
     }
 
+    /**
+     * Empty all of the contents in the cart
+     */
     public void emptyCart(){
         this.getCart().clear();
     }
 
+    /**
+     * @return the Integer value corresponding to the price of a supervisor
+     */
     public Integer getSupervisorPrice(){
         return this.supervisorPrice;
     }
 
+    /**
+     * @return the Integer value corresponding to the price of an agent
+     */
     public Integer getAgentPrice(){
         return this.agentPrice;
     }
 
+    /**
+     * @return the Integer value corresponding to the price of an automated counter
+     */
     public Integer getAutomatedCounterPrice(){
         return this.automatedCounterPrice;
     }
 
+    /**
+     * @return the Integer value corresponding to the price of an in person counter
+     */
     public Integer getInPersonCounterPrice(){
         return this.inPersonCounterPrice;
     }

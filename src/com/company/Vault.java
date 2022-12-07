@@ -30,19 +30,31 @@ public class Vault {
 
     //METHODS
 
+    /**
+     * @return the map of merchandise to the linked list of the merchandise's type
+     */
     public HashMap<Shop.Merchandise, LinkedList> getListMap(){
         return listMap;
     }
 
+    /**
+     * @return a map of a new object for each new instance of the merchandise being purchased
+     */
     public HashMap<Shop.Merchandise, Object> getItemMap(){
         return itemMap;
     }
 
+    /**
+     * @param diamond earned by the player to be added to their collection
+     */
     public void addDiamond(Diamond diamond){
         diamonds.add(diamond);
     }
 
-    //Checks if the player has sufficient points to afford the content of their cart
+    /**
+     * @param shop that the cart belongs to
+     * @return boolean if the player is able to afford their current cart contents with given their points
+     */
     public boolean canAffordCart(Shop shop){
         if(this.getPoints() < shop.computeCartPrice()){
             return false;
@@ -50,21 +62,30 @@ public class Vault {
         return true;
     }
 
-    //Checks out the cart if the player can afford the content
+    /**
+     * @param shop that you are checking out the cart from
+     * @return whether or not the cart is successfully checked out
+     */
     public boolean checkOutCart(Shop shop){
+
+        //Only check out the cart if the player has enough points in the vault to afford it
         if(canAffordCart(shop)){
+
+            //Add a new instance of the item to the corresponding list for the type of merchandise
             for(Shop.Merchandise item : shop.getCart()){
                 this.getListMap().get(item).add(this.getItemMap().get(item));
             }
-            this.subtractFromPoints(shop.computeCartPrice());
-            shop.emptyCart();
+            this.subtractFromPoints(shop.computeCartPrice());   //subtract cart price from points
+            shop.emptyCart();   //empty cart
             return true;
         }
         System.out.println("Insufficient Funds for Purchase");
         return false;
     }
 
-    //Creates a map of each merchandise item to a new instance of the item being purchased
+    /**
+     * @return the hashmap mapping each merchandise enum to a new object instance for the corresponding merchandise
+     */
     public HashMap<Shop.Merchandise, Object> makeItemMap(){
         HashMap<Shop.Merchandise, Object> itemMap = new HashMap<>();
         itemMap.put(Shop.Merchandise.AGENT, new Agent());
@@ -74,7 +95,9 @@ public class Vault {
         return itemMap;
     }
 
-    //Creates a map of each merchandise to the corresponding linked list in player where the merchandise will be stored
+    /**
+     * @return the hashmap mapping each merchandise enum to the list for the corresponding merchandise
+     */
     public HashMap<Shop.Merchandise, LinkedList> makeListMap(){
         HashMap<Shop.Merchandise, LinkedList> listMap = new HashMap<>();
         listMap.put(Shop.Merchandise.AGENT, this.getAgents());
@@ -84,33 +107,54 @@ public class Vault {
         return listMap;
     }
 
+    /**
+     * @return the shop belonging to this vault
+     */
     public Shop getShop(){
         return shop;
     }
 
+    /**
+     * @return all of the diamonds belonging to the player
+     */
     public LinkedList<Diamond> getDiamonds(){
         return this.diamonds;
     }
 
-    //Converts diamonds to points based on how many and the value of the diamonds
+    /**
+     * Converts all the diamonds belonging to the player to points to be used
+     */
     public void convertDiamondToPoints(){
+
+        //Only convert the diamonds to points of the list is not empty
         if(diamonds.size() == 0){
             return;
         }
-        points = points + diamonds.size() * diamonds.getFirst().getPointValue();
+        points = points + diamonds.size() * diamonds.getFirst().getPointValue();    //Add value of diamonds to this player's points
         diamonds.clear();
     }
 
+    /**
+     * @return the number of points this player has that can be used
+     */
     public int getPoints(){
         return this.points;
     }
 
+    /**
+     * @param value to be added to to the player's points
+     */
     public void addToPoints(int value){
         points = points + value;
     }
 
-    //Subtracts int from points (cannot go negative)
+    /**
+     * @param value to be subtracted from the player's points
+     * @return boolean if the subtraction was successful
+     */
     public boolean subtractFromPoints(int value){
+
+        //Only subtract the points of the player can afford to subtract the points
         if(points - value < 0){
             System.out.println("Insufficient Funds");
             return false;
@@ -119,30 +163,51 @@ public class Vault {
         return true;
     }
 
+    /**
+     * @return the number of agents the player owns
+     */
     public int getNumAgents(){
         return agents.size();
     }
 
+    /**
+     * @return the number of automated lines the player owns
+     */
     public int getNumAutomatedLines(){
         return automatedLines.size();
     }
 
+    /**
+     * @return the number of in person lines the player owns
+     */
     public int getNumInPersonLines(){
         return inPersonLines.size();
     }
 
+    /**
+     * @return the list of agents the player owns
+     */
     public LinkedList<Agent> getAgents() {
         return agents;
     }
 
+    /**
+     * @return the list of automated lines the player owns
+     */
     public LinkedList<AutomatedLine> getAutomatedLines() {
         return automatedLines;
     }
 
+    /**
+     * @return the list of agents the player owns
+     */
     public LinkedList<InPersonLine> getInPersonLines() {
         return inPersonLines;
     }
 
+    /**
+     * @return the list of supervisors the player owns
+     */
     public LinkedList<Supervisor> getSupervisors() {
         return supervisors;
     }

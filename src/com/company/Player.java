@@ -15,10 +15,17 @@ public class Player {
     }
 
     //METHODS
+
+    /**
+     * @return the vault corresponding to this player
+     */
     public Vault getVault(){
         return this.vault;
     }
 
+    /**
+     * @return the string username corresponding to this character
+     */
     public String getUsername(){
         return this.username;
     }

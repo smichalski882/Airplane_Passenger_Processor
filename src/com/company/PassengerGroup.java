@@ -23,7 +23,10 @@ public class PassengerGroup {
         this.currentCounter = currentCounter;
     }
 
-    //Add a passenger to this passenger group
+    /**
+     * @param passenger to be added to this passenger group
+     * @return boolean if the passenger is successfully added
+     */
     public boolean addPassenger(Passenger passenger){
 
         //Check to see if passenger already exists in the group
@@ -32,10 +35,9 @@ public class PassengerGroup {
             return false;
         }
 
-        //Set the passenger's group to this, add the passenger to the group, set the passenger's setInGroup to be true, and return true
-        passenger.setGroup(this);
-        this.group.add(passenger);
-        passenger.setInGroup(true);
+        passenger.setGroup(this); //Add this group to the passenger
+        this.group.add(passenger); //Add this passenger to the group
+        passenger.setInGroup(true); //Passenger is inGroup
         return true;
     }
 
@@ -43,7 +45,10 @@ public class PassengerGroup {
         return this.group;
     }
 
-    //Check to see if passenger already exists in the group
+    /**
+     * @param passenger to be checked
+     * @return boolean if this group already has the passenger
+     */
     public boolean hasPassenger(Passenger passenger){
 
         //For each passenger in the group check if it exists
@@ -52,16 +57,19 @@ public class PassengerGroup {
                 return true;
             }
         }
-        return false;
+        return false; //Passenger does not exist in group already
     }
 
-    //Removes a passenger if it exists in the list
+    /**
+     * @param toBeRemoved passenger to be removed fromm the group
+     * @return boolean if the passenger was removed
+     */
     public boolean removePassenger(Passenger toBeRemoved){
-        if(hasPassenger(toBeRemoved)){
+        if(hasPassenger(toBeRemoved)){ //Ensure passenger exists in group
             toBeRemoved.setGroup(null);
             return this.getGroup().remove(toBeRemoved);
         }
-        return false;
+        return false; //Passenger does not exist in group, cannot be removed
     }
 
 }

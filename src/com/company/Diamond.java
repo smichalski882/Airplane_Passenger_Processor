@@ -11,6 +11,10 @@ public class Diamond {
     }
 
     //METHODS
+
+    /**
+     * @return the point value for a single diamond as an int
+     */
     public int getPointValue(){
         return this.pointValue;
     }

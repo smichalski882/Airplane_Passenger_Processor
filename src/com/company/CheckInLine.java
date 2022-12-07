@@ -26,24 +26,25 @@ public class CheckInLine {
 
     //Gets the next passenger
 
-    //Calculates what the next passenger should be based on whether or not a group is being processed
+    /**
+     * @param passengerQueue to draw the next passengers from
+     * @return the next passenger that should be processed from the queue
+     */
     public Passenger calculateNextPassenger(PassengerQueue passengerQueue){
-
-        //IF PROCESSING A GROUP CURRENTLY
+        //If calculating new passenger
         if(processingGroup){
-            //If there are no more members in the group to process, set processingGroup to false and return the next method again
-            if(this.getGroup().getGroup().isEmpty()){
+            if(this.getGroup().getGroup().isEmpty()){       //no more group members to process, change pointers to reflect
                 processingGroup = false;
                 this.setGroup(null);
-                return calculateNextPassenger(passengerQueue);
+                return calculateNextPassenger(passengerQueue); //call the same method again
             }
 
-            //if a group is being processed by this check in line, take the next passenger in the group
+            //group is not empty, take next from the group
             Passenger next = this.getCurrentPassenger().getGroup().getGroup().getFirst();
             this.getCurrentPassenger().getGroup().getGroup().removeFirst();
             return next;
         }
-        //Take the next passenger from the queue
+        //No group, take the next from the queue
         return takeNextFromQueue(passengerQueue);
     }
 
@@ -52,32 +53,41 @@ public class CheckInLine {
         return next;
     }
 
-    //Processes a passenger given a passenger queue
+    /**
+     * @param passengerQueue to process passengers from
+     */
     public void process(PassengerQueue passengerQueue){
+        //Decide whether to process with agent or with both agent and supervisor
         if(this.hasSupervisor()){
             processWithSupervisor(passengerQueue);
         }
         processWithAgent(passengerQueue);
     }
 
-    //Processes passenger with supervisor, takes less time
+    /**
+     * @param passengerQueue to draw next passenger from
+     */
     public void processWithSupervisor(PassengerQueue passengerQueue){
         setNext(calculateNextPassenger(passengerQueue));
-        this.getProcessor().process(this.getNext(), this.getAssignedAgent(), this.getAssignedSupervisor());
+        this.getProcessor().process(this.getNext(), this.getAssignedAgent(), this.getAssignedSupervisor()); //call process method with both agent and supervisor
     }
 
-    //Processes passenger with agent, takes full time
+    /**
+     * @param passengerQueue to draw next passenger from
+     */
     public void processWithAgent(PassengerQueue passengerQueue){
         setNext(calculateNextPassenger(passengerQueue));
-        this.getProcessor().process(this.getNext(), this.getAssignedAgent());
+        this.getProcessor().process(this.getNext(), this.getAssignedAgent()); //call process method with just agent
     }
 
-    //Takes the next passenger from the passenger queue
+    /**
+     * @param passengerQueue to draw new passengers from
+     * @return the passenger that was taken from the queue
+     */
     public Passenger takeNextFromQueue(PassengerQueue passengerQueue){
         //Take from frequent flyers if any exist
         if(!passengerQueue.getFrequentFlyerQueue().isEmpty()){
-            Passenger next = passengerQueue.getFrequentFlyerQueue().getFirst();
-            passengerQueue.getFrequentFlyerQueue().removeFirst();
+            Passenger next = passengerQueue.getFrequentFlyerQueue().removeFirst();
             return next;
         }
         //Take regular passengers next
@@ -87,39 +97,62 @@ public class CheckInLine {
     }
 
 
-    //Set the next passenger
+    /**
+     * @param next passenger you are setting to be the next processed
+     */
     public void setNext(Passenger next){
-        if(next.hasGroup() && !processingGroup){
+        if(next.hasGroup() && !processingGroup){ //if the next has a group, change pointers to reflect
             this.setGroup(next.getGroup());
             this.processingGroup = true;
         }
         this.next = next;
     }
 
+    /**
+     * @return the baggage weight limit
+     */
     public int getBaggageLimit(){
         return this.baggageLimit;
     }
 
+    /**
+     * @return the agent assigned to this check in line
+     */
     public Agent getAssignedAgent(){
         return this.assignedAgent;
     }
 
+    /**
+     * @param agent that you are assigning to this check in line
+     */
     public void setAssignedAgent(Agent agent){
         this.assignedAgent = agent;
     }
 
+    /**
+     * @return the supervisor assigned to this check in line
+     */
     public Supervisor getAssignedSupervisor(){
         return this.assignedSupervisor;
     }
 
+    /**
+     * @param supervisor that you want to set assigned to this check in line
+     */
     public void setAssignedSupervisor(Supervisor supervisor){
         this.assignedSupervisor = supervisor;
     }
 
+    /**
+     * @return the current passenger at the check in line
+     */
     public Passenger getCurrentPassenger(){
         return this.currentPassenger;
     }
 
+    /**
+     * @param passenger to set as the current passenger at the check in line
+     */
     public void setCurrentPassenger(Passenger passenger){
         this.currentPassenger = passenger;
     }
@@ -131,6 +164,9 @@ public class CheckInLine {
         return false;
     }
 
+    /**
+     * @return whether or not the check in line has an agent
+     */
     public boolean hasAgent(){
         if(this.getAssignedAgent() != null){
             return true;
@@ -138,6 +174,9 @@ public class CheckInLine {
         return false;
     }
 
+    /**
+     * @return whether or not this check in line has a passenger
+     */
     public boolean hasPassenger(){
         if(this.getCurrentPassenger() != null){
             return true;
@@ -145,24 +184,39 @@ public class CheckInLine {
         return false;
     }
 
-    //Transfers passenger to a different check in line
+    /**
+     * @param counter you want to transfer the passenger to
+     * @return boolean whether the passenger was able to be transferred
+     */
     public boolean transferPassenger(CheckInLine counter){
+        //Check if it is possible passenger
         if(!counter.hasPassenger()){
+            //set the pointers to reflect the transfer
             counter.setCurrentPassenger(this.getCurrentPassenger());
             this.setCurrentPassenger(null);
             return true;
         }
+        //Not possible to move passenger
         return false;
     }
 
+    /**
+     * @return the passenger processor for this check in line
+     */
     public PassengerProcessor getProcessor(){
         return this.processor;
     }
 
+    /**
+     * @return the group being checked in by this check in line
+     */
     public PassengerGroup getGroup(){
         return group;
     }
 
+    /**
+     * @param group to set the group of this check in line to
+     */
     public void setGroup(PassengerGroup group){
         this.group = group;
     }

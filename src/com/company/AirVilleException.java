@@ -16,6 +16,10 @@ public class AirVilleException {
     }
 
     //METHODS
+
+    /**
+     * @return the error code associated with the exception
+     */
     public AirVilleException.ErrorCode getErrorCode(){
         return this.errorCode;
     }

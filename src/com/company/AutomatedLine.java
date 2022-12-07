@@ -16,13 +16,20 @@ public class AutomatedLine extends CheckInLine{
     }
 
     //METHODS
+
+    /**
+     * @param agent you are assigning to this counter
+     */
     @Override
     public void setAssignedAgent(Agent agent){
+        //Find if the agent already is working on automated counter
         for(Agent onAuto : automatedAgents){
             if(onAuto.equals(agent)){
-                System.out.println("This agent is already working the automated lines!");
+                System.out.println("This agent is already working the automated lines!"); //cannot set agent
+                return;
             }
         }
+        //This agent can be assigned
         this.agent = agent;
         agentsAssigned++;
     }
