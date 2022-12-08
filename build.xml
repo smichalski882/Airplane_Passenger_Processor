@@ -24,7 +24,7 @@ $ANT_HOME/lib must contain (see Ant-JUnit and JaCoCo installation guides):
 <project name="AirVille" xmlns:jacoco="antlib:org.jacoco.ant">
     <!--   Directory with source files -->
     <property name="src.dir" value="src"/>
-
+:
     <!--   Directories with the class files -->
     <property name="build.dir" value="build"/>
 
@@ -50,7 +50,7 @@ $ANT_HOME/lib must contain (see Ant-JUnit and JaCoCo installation guides):
     <!-- TODO: if this project specifies a main class, replace "HelloWorld" with that main class (otherwise, you can ignore this) -->
     <!--property name="main-class" value="${ant.project.name}.HelloWorld"/-->
 
-    <!--   Additional jar that may be needed for properly runnign junit -->
+    <!--   Additional jar that may be needed for properly running junit -->
     <path id="hamcrest.classpath">
         <pathelement location="${ant.home}/lib/hamcrest-core-1.3.jar"/>
     </path>

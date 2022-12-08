@@ -41,11 +41,9 @@ public class Bag implements Comparable<Bag>{
 
     /**
      * @param otherBag to be compared to from this bag
-     * @return whether or not the other instance is greater, equal, or less than this bag
+     * @return whether or not the other instance is greater, equal, or less than this bag in weight
      */
     @Override
-
-    //Compare the weight of two bags
     public int compareTo(Bag otherBag) {
         if(this.getWeight() < otherBag.getWeight()){ //this weighs less than other bag
             return -1;
