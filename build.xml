@@ -24,7 +24,7 @@ $ANT_HOME/lib must contain (see Ant-JUnit and JaCoCo installation guides):
 <project name="AirVille" xmlns:jacoco="antlib:org.jacoco.ant">
     <!--   Directory with source files -->
     <property name="src.dir" value="src"/>
-:
+
     <!--   Directories with the class files -->
     <property name="build.dir" value="build"/>
 
@@ -50,7 +50,7 @@ $ANT_HOME/lib must contain (see Ant-JUnit and JaCoCo installation guides):
     <!-- TODO: if this project specifies a main class, replace "HelloWorld" with that main class (otherwise, you can ignore this) -->
     <!--property name="main-class" value="${ant.project.name}.HelloWorld"/-->
 
-    <!--   Additional jar that may be needed for properly running junit -->
+    <!--   Additional jar that may be needed for properly runnign junit -->
     <path id="hamcrest.classpath">
         <pathelement location="${ant.home}/lib/hamcrest-core-1.3.jar"/>
     </path>
@@ -81,7 +81,7 @@ $ANT_HOME/lib must contain (see Ant-JUnit and JaCoCo installation guides):
     -->
 
     <!--   ant test : run unit tests -->
-    <target name="tests" depends="build">
+    <target name="test" depends="build">
         <mkdir dir="${report.dir}"/>
         <mkdir dir="${junit.dir}"/>
         <mkdir dir="${jacoco.dir}"/>
@@ -90,7 +90,7 @@ $ANT_HOME/lib must contain (see Ant-JUnit and JaCoCo installation guides):
                 <assertions><enable/></assertions>
                 <formatter type="xml"/>
                 <batchtest fork="yes" filtertrace="off" todir="${junit.dir}">
-                    <fileset dir="${build.dir}" includes="**/*Tests.class"/>
+                    <fileset dir="${build.dir}" includes="**/*Test.class"/>
                 </batchtest>
                 <classpath refid="hamcrest.classpath"/>
                 <classpath path="${build.dir}"/>
@@ -99,7 +99,7 @@ $ANT_HOME/lib must contain (see Ant-JUnit and JaCoCo installation guides):
     </target>
 
     <!--   ant report : generate the JUnit and code coverage reports  -->
-    <target name="report" depends="tests">
+    <target name="report" depends="test">
         <junitreport todir="${junit.dir}">
             <fileset dir="${junit.dir}" includes="TEST-*.xml"/>
             <report todir="${junit.dir}"/>
