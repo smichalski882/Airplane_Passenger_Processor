@@ -17,6 +17,11 @@ public class Vault {
     private final HashMap<Shop.Merchandise, Object> itemMap;
 
     //CONSTRUCTOR
+
+    /**
+     * Create a new instance of the vault
+     * All fields automatically assigned on creation, no parameters necessary
+     */
     public Vault(){
         diamonds = new LinkedList<Diamond>();
         agents = new LinkedList<Agent>();

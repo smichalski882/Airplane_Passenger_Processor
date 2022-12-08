@@ -9,6 +9,10 @@ public class PassengerGroup {
     private CheckInLine currentCounter;
 
     //CONSTRUCTOR
+
+    /**
+     * Create a new instance of passenger group, no parameters needed
+     */
     public PassengerGroup(){
         this.group = new LinkedList<Passenger>();
     }

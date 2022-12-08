@@ -10,6 +10,11 @@ public class PassengerQueue {
     private boolean blocked;
 
     //CONSTRUCTOR
+
+    /**
+     * Create a new instance of passenger queue
+     * Automatically assigns linked lists for frequent flyer and regular flyer queues, no parameters necessary
+     */
     public PassengerQueue(){
         frequentFlyerQueue = new LinkedList<Passenger>();
         regularFlyerQueue = new LinkedList<Passenger>();

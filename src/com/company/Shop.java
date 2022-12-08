@@ -7,7 +7,9 @@ public class Shop {
 
     //ENUMS
 
-    //All purchasable items in AirVille
+    /**
+     * Enum for each purchasable object
+     */
     public enum Merchandise{
         SUPERVISOR, AGENT, AUTOMATED_COUNTER, IN_PERSON_COUNTER
     }
@@ -21,6 +23,11 @@ public class Shop {
     private final HashMap<Merchandise, Integer> priceMap;
 
     //CONSTRUCTOR
+
+    /**
+     * Create a new instance of the shop
+     * All prices automatically assigned and all objects automatically created, no parameters needed
+     */
     public Shop(){
         supervisorPrice = Integer.valueOf(1000);
         agentPrice = Integer.valueOf(1000);

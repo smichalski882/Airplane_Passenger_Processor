@@ -7,6 +7,11 @@ public class Bag implements Comparable<Bag>{
     private boolean isFlagged;
 
     //CONSTRUCTOR
+
+    /**
+     * Create a new instance of Bag
+     * @param weight int value to assign to the bag
+     */
     public Bag(int weight){
         this.weight = weight;
     }

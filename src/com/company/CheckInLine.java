@@ -16,6 +16,11 @@ public class CheckInLine {
     private PassengerGroup group;
 
     //CONSTRUCTOR
+
+    /**
+     * Create a new instance of a check in line
+     * @param processor assigned to process passengers
+     */
     public CheckInLine(PassengerProcessor processor){
         assertNotNull(processor);
         this.processor = processor;
@@ -23,8 +28,6 @@ public class CheckInLine {
     }
 
     //METHODS
-
-    //Gets the next passenger
 
     /**
      * @param passengerQueue to draw the next passengers from
@@ -54,6 +57,7 @@ public class CheckInLine {
     }
 
     /**
+     * Process passengers based on Passenger Queue
      * @param passengerQueue to process passengers from
      */
     public void process(PassengerQueue passengerQueue){

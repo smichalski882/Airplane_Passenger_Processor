@@ -11,6 +11,11 @@ public class AirVilleException {
     }
 
     //CONSTRUCTOR
+
+    /**
+     * Create AirvilleException with an associated error code depending on the error
+     * @param errorCode being assigned to this instance of exception
+     */
     public AirVilleException(AirVilleException.ErrorCode errorCode){
         this.errorCode = errorCode;
     }

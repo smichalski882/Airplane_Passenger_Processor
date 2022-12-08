@@ -4,6 +4,10 @@ public class Agent extends AbstractEmployee {
 
 
     //CONSTRUCTOR
+
+    /**
+     * Construct a new agent from the abstract employee superclass, no parameters necessary
+     */
     public Agent() {
         super();
     }

@@ -6,6 +6,11 @@ public class InPersonLine extends CheckInLine{
 
 
     //CONSTRUCTOR
+
+    /**
+     * Create a new instance of an in person line
+     * @param processor assigned to this counter to process passengers
+     */
     public InPersonLine(PassengerProcessor processor) {
         super(processor);
     }

@@ -3,6 +3,10 @@ package com.company;
 public class Supervisor extends AbstractEmployee{
 
     //CONSTRUCTOR
+
+    /**
+     * Create a new instance of a supervisor, no parameters needed
+     */
     public Supervisor(){
         super();
     }

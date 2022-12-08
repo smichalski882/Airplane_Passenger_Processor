@@ -6,7 +6,9 @@ public class Passenger {
 
     //ENUMS
 
-    //Time delay enum, each time delay increases the processing time of the passenger
+    /**
+     * Enum of each possible time delay that the passenger could have
+     */
     public enum TimeDelay{
         DELAYED_FLIGHT, OVERBOOKED_FLIGHT, OVERWEIGHT_LUGGAGE
     }
@@ -20,6 +22,13 @@ public class Passenger {
     private final int baggageLimit;
 
     //CONSTRUCTOR
+
+    /**
+     * Create a new instance of passenger
+     * @param name of this passenger
+     * @param luggage this passenger is travelling with
+     * @param timeDelays that increase this passenger's process time
+     */
     public Passenger(String name, LinkedList<Bag> luggage, LinkedList<Passenger.TimeDelay> timeDelays){
         this.name = name;
         this.luggage = luggage;

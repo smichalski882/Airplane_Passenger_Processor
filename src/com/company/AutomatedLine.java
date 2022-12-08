@@ -11,6 +11,11 @@ public class AutomatedLine extends CheckInLine{
     private Agent agent;
 
     //CONSTRUCTOR
+
+    /**
+     * Create new instance of automated line
+     * @param processor assigned to this line so it can process passengers
+     */
     public AutomatedLine(PassengerProcessor processor) {
         super(processor);
     }

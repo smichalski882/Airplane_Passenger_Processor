@@ -6,6 +6,10 @@ public class Diamond {
     public final int pointValue = 1000;
 
     //CONSTRUCTOR
+
+    /**
+     * Create a new instance of diamond, no parameters necessary
+     */
     public Diamond(){
         ;
     }

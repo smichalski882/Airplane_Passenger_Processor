@@ -8,6 +8,11 @@ public class Player {
     private final PassengerQueue passengerQueue;
 
     //CONSTRUCTOR
+
+    /**
+     * Create a new player instance
+     * @param username belonging to this account
+     */
     public Player(String username){
         this.vault = new Vault();
         this.username = username;
