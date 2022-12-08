@@ -3,6 +3,9 @@ package com.company;
 import java.util.LinkedList;
 import static org.junit.Assert.*;
 
+/**
+ * Class for generic check in line
+ */
 public class CheckInLine {
 
     //FIELDS

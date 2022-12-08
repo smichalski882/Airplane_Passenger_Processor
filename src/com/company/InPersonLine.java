@@ -1,5 +1,8 @@
 package com.company;
 
+/**
+ * Class to represent in person check in line
+ */
 public class InPersonLine extends CheckInLine{
 
     //FIELDS

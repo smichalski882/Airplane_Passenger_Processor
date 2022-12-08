@@ -2,6 +2,9 @@ package com.company;
 
 import java.util.LinkedList;
 
+/**
+ * Generic passenger class to be extended by frequent/regular flyers
+ */
 public class Passenger {
 
     //ENUMS

@@ -1,5 +1,8 @@
 package com.company;
 
+/**
+ * Class to create instance of a player for the game
+ */
 public class Player {
 
     //FIELDS

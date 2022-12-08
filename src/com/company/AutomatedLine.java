@@ -2,6 +2,9 @@ package com.company;
 
 import java.util.LinkedList;
 
+/**
+ * Class for automated check in lines
+ */
 public class AutomatedLine extends CheckInLine{
 
     //FIELDS

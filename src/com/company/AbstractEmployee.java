@@ -1,5 +1,8 @@
 package com.company;
 
+/**
+ * Abstract employee class to be implemented by employees
+ */
 public abstract class AbstractEmployee {
 
     //FIELDS

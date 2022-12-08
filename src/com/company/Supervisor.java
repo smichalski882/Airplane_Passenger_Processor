@@ -1,5 +1,8 @@
 package com.company;
 
+/**
+ * Class for the supervisor employee to process passengers
+ */
 public class Supervisor extends AbstractEmployee{
 
     //CONSTRUCTOR

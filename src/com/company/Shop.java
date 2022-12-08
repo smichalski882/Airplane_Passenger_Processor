@@ -3,6 +3,9 @@ package com.company;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+/**
+ * Class for the shop that player can purchase merchandise with points from
+ */
 public class Shop {
 
     //ENUMS

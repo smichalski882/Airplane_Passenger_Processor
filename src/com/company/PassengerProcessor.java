@@ -2,6 +2,9 @@ package com.company;
 
 import java.util.HashMap;
 
+/**
+ * Class to handle passenger processing
+ */
 public class PassengerProcessor {
 
     //FIELDS

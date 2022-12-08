@@ -1,5 +1,8 @@
 package com.company;
 
+/**
+ * Class to handle and create exceptions pertaining to AirVille
+ */
 public class AirVilleException {
 
     //FIELDS

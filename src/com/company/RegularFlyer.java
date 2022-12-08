@@ -4,6 +4,9 @@ import sun.awt.image.ImageWatched;
 
 import java.util.LinkedList;
 
+/**
+ * Class to represent regular flyer passenger
+ */
 public class RegularFlyer extends Passenger{
 
     //CONSTRUCTOR

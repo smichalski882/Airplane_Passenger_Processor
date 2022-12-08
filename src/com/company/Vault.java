@@ -3,6 +3,9 @@ package com.company;
 import java.util.HashMap;
 import java.util.LinkedList;
 
+/**
+ * Class that contains all of the player's items
+ */
 public class Vault {
 
     //FIELDS

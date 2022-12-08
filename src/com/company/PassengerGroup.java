@@ -2,6 +2,9 @@ package com.company;
 
 import java.util.LinkedList;
 
+/**
+ * Class to make passenger groups to be processed together
+ */
 public class PassengerGroup {
 
     //FIELDS

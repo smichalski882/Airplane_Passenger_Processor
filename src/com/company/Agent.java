@@ -1,5 +1,8 @@
 package com.company;
 
+/**
+ * Agent employee to process passengers
+ */
 public class Agent extends AbstractEmployee {
 
 

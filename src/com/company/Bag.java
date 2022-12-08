@@ -1,5 +1,8 @@
 package com.company;
 
+/**
+ * Bag class to be used for passenger luggage
+ */
 public class Bag implements Comparable<Bag>{
 
     //FIELDS

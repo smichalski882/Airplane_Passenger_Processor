@@ -2,6 +2,9 @@ package com.company;
 
 import java.util.LinkedList;
 
+/**
+ * Class to represent frequent flyer passengers
+ */
 public class FrequentFlyer extends Passenger{
 
     //CONSTRUCTOR

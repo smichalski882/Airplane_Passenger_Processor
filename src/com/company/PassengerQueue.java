@@ -2,6 +2,9 @@ package com.company;
 
 import java.util.LinkedList;
 
+/**
+ * Class to hold passengers waiting to be processed
+ */
 public class PassengerQueue {
 
     //FIELDS

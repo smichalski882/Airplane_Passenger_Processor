@@ -1,5 +1,8 @@
 package com.company;
 
+/**
+ * Class for diamonds that are worth points for the player
+ */
 public class Diamond {
 
     //FIELDS
